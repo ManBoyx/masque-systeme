@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Masque Système",
+  "version": "1.0.0",
+  "description": "Réduit et falsifie les informations sur l'ordinateur exposées aux sites web (anti-fingerprinting).",
+  "permissions": ["privacy", "declarativeNetRequest"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["inject.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true,
+      "world": "MAIN"
+    }
+  ]
+}
